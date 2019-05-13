@@ -30,6 +30,12 @@ problem2()
 
 //problem3()
 
+let problem4() = 
+    printfn "4). ANSWER: B"
+    printfn "Lists are immutable, they can be of any length, and are heterogenous and therefore, not polymorphic.\n"
+
+problem4()
+
 
 
 
