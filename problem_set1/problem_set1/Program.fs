@@ -36,7 +36,15 @@ let problem4() =
 
 problem4()
 
+let problem5()=
 
+    printfn "5). ANSWER: A"
+    printfn "  a). 1::2::3::[] results in %A" (1::2::3::[])
+    printfn "  b). 1@2@3@[] expects a list but gets an integer"
+    printfn "  c). [1;2;3]::[] is interpreted as %A" ([1;2;3]::[])
+    printfn "  d). ((1::2)::3)::[] expects an int list but gets an int\n"
+
+problem5()
 
 
 Console.ReadKey() |> ignore
