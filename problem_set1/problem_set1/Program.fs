@@ -148,4 +148,17 @@ let problem14()=
 problem14()
 
 
+let problem15()=
+    
+    printfn "15). ANSWER: C"
+    printfn "  a). fun f -> String.length (f \"cat\") values to (string -> string) -> int"
+    printfn "  b). fun x y -> x \" \" + y values to string -> string -> string"
+    printfn "  c). fun f -> f (f \"cat\") values to (string -> string) -> string"
+    printfn "  d). fun f -> f \"cat\" values to (string -> 'a) -> 'a"
+
+problem15()
+
+
+
+
 Console.ReadKey() |> ignore
