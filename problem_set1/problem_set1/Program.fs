@@ -90,6 +90,12 @@ problem8()
 
 let problem9()=
 
+    printfn "9). ANSWER: C"
+    printfn "   fun f -> f 17 = value : (int -> 'a ) -> 'a\n"
+    //left associative. int 17 goes into function f, f returns a value ('a) that inputs into function f and returns 'a.
+    //fun f -> f 17
+
+
 
 problem9()
 
