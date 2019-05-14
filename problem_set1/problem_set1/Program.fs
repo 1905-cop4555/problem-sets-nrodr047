@@ -46,5 +46,19 @@ let problem5()=
 
 problem5()
 
+let problem6()=
+
+    let foo = [1;2;3]
+    let baz = [4;5;6]
+
+    printfn "6). ANSWER: B"
+    printfn " List.map List.head foo @ baz = %A \n value: list -> list -> list" (List.map List.head foo @ baz)
+    printfn " ((List.map Listhead) foo) @ baz) = value: list -> list -> list\n"
+
+
+problem6()
+
+
+
 
 Console.ReadKey() |> ignore
