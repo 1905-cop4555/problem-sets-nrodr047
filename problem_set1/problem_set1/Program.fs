@@ -99,5 +99,15 @@ let problem9()=
 
 problem9()
 
+let problem10()=
+
+    printfn "10). ANSWER: D"
+    printfn "   a). (@)[5] value: int list -> int list"
+    printfn "   b). [fun x -> x + 1] value: ('a ^ 'b) list -> ('a ^ 'b) list -- error" 
+    printfn "   c). fun x -> 5::x value: int list" //notice 5 is just an int
+    printfn "   d). fun x -> x::[5] value: int -> int list" // int x appends to an int list
+
+problem10()
+
 
 Console.ReadKey() |> ignore
