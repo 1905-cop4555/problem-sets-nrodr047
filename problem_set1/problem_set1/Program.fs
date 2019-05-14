@@ -109,5 +109,17 @@ let problem10()=
 
 problem10()
 
+let problem11()=
+
+    printfn "11). ANSWER: A"
+    printfn "  (3, [], true) is the threeple. 3 defaults to int. [] defaults to a 'a list. true is a boolean"
+    printfn "  Therefore, the value: int * 'a list * bool"
+
+problem11()
+
+let problem12()=
+
+
+problem12()
 
 Console.ReadKey() |> ignore
