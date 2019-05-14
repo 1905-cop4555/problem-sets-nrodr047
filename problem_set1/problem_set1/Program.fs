@@ -48,17 +48,50 @@ problem5()
 
 let problem6()=
 
-    let foo = [1;2;3]
-    let baz = [4;5;6]
 
     printfn "6). ANSWER: B"
-    printfn " List.map List.head foo @ baz = %A \n value: list -> list -> list" (List.map List.head foo @ baz)
+    printfn " List.map List.head foo @ baz = value: list -> list -> list"
     printfn " ((List.map Listhead) foo) @ baz) = value: list -> list -> list\n"
 
 
 problem6()
 
+let problem7()= 
 
+    printfn "7). ANSWER: D"
+    printfn " int * bool -> string list is interpreted as a tuple that returns a string list"
+    printfn " therefore, (int * bool) -> (string list) is correct.\n"
+
+problem7()
+
+let problem8()= 
+
+    let rec foo = function
+        |(xs, []) ->  xs //if tuple only contains first list, return first list
+        |(xs, y::ys)-> foo (xs@[y], ys) //else call foo and append y to the end of xs until ys is empty.
+
+    let xs = [1;2;3]
+    let ys = [4;5;6]
+
+    printfn "8). ANSWER: D"
+    printfn "    Recursive rules:"
+    printfn "    1. Make sure the basecases return the correct answers."
+    printfn "    2. Assume the recursive call works."
+    printfn "    3. Make sure each recursive call works on smaller input."
+    printfn "    4. Make sure there are enough cases for all inputs"
+    printfn " let xs = %A" (xs)
+    printfn " let ys = %A" (ys)
+    printfn "  foo (xs,ys) = %A" (foo (xs,ys))
+    printfn "Therefore, the recursive function foo works correctly and does all items in the checklist\n"
+    
+
+
+problem8()
+
+let problem9()=
+
+
+problem9()
 
 
 Console.ReadKey() |> ignore
