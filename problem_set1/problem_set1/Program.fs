@@ -105,7 +105,7 @@ let problem10()=
     printfn "   a). (@)[5] value: int list -> int list"
     printfn "   b). [fun x -> x + 1] value: ('a ^ 'b) list -> ('a ^ 'b) list -- error" 
     printfn "   c). fun x -> 5::x value: int list" //notice 5 is just an int
-    printfn "   d). fun x -> x::[5] value: int -> int list" // int x appends to an int list
+    printfn "   d). fun x -> x::[5] value: int -> int list\n" // int x appends to an int list
 
 problem10()
 
@@ -113,13 +113,39 @@ let problem11()=
 
     printfn "11). ANSWER: A"
     printfn "  (3, [], true) is the threeple. 3 defaults to int. [] defaults to a 'a list. true is a boolean"
-    printfn "  Therefore, the value: int * 'a list * bool"
+    printfn "  Therefore, the value: int * 'a list * bool\n"
 
 problem11()
 
 let problem12()=
 
+    printfn "12). ANSWER: A"
+    printfn "  a). fun x y -> x+y+\".\" value: string -> string -> string as expected from a curried function\n"
+
 
 problem12()
+  
+
+let problem13()=
+
+    printfn "13). ANSWER: D"
+    printfn "   fun xs -> List.map (+) xs values to int list -> (int -> int) list"
+    printfn "   The (+) operator values to (int -> int) in which List.map acts upon xs to make the function into (int -> int) list"
+    printfn "   Therefore fun xs is an int list\n"
+
+
+problem13()
+
+let problem14()=
+    
+    printfn "14). ANSWER: NONE"
+    printfn "  a). fun x -> fun y -> x y \".\" values to 'a -> string -> 'b"
+    printfn "  b). fun x y -> String.length x * String.length y values to string -> string -> int" // the * operator is multiplying
+    printfn "  c). fun(x,y) -> x + y + \".\" values to (string * string) -> string which is a tuple that returns a string"
+    printfn "  d). (+) values to int -> int -> int and it is missing members\n"
+ 
+
+problem14()
+
 
 Console.ReadKey() |> ignore
