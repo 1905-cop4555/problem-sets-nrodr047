@@ -176,10 +176,23 @@ let problem16()=
         (top/gcd(top,bottom), bottom/gcd(top,bottom)) //get gcd 
 
     printfn "16) (1,2) (.+) (1,3) = %A" ((.+) (1,2) (1,3))
-    printfn "    (1,2) (.+) (1,3) (.*) (3,7) = %A" ((.*) (3,7) ((.+) (1,2) (1,3))) //why is it not 11? FIX ME
+    printfn "    (1,2) (.+) (1,3) (.*) (3,7) = %A\n" ((.*) (3,7) ((.+) (1,2) (1,3))) //why is it not 11? FIX ME
 
 
 problem16()
+
+let problem17()=
+
+    let a = [[0;1;1];[3;2];[];[5]]
+
+    let revlist xs = List.map (fun x -> List.rev x) xs
+    //List.map is like a for loop
+    //for every x in xs, List.rev reverses their order
+
+    printfn "17). a = %A" (a)
+    printfn "   revlist a = %A\n" (revlist a)
+
+problem17()
 
 
 Console.ReadKey() |> ignore
