@@ -6,6 +6,10 @@ open System.Runtime.Remoting.Metadata.W3cXsd2001
 open System.Linq.Expressions
 open System.Linq.Expressions
 open System.Runtime.InteropServices
+open System.Runtime.Remoting.Metadata.W3cXsd2001
+open System.Runtime.Remoting.Metadata.W3cXsd2001
+open System.Runtime.Remoting.Metadata.W3cXsd2001
+open System.Runtime.InteropServices
 
 //problem set 1
 
@@ -280,13 +284,23 @@ let problem23()=
         // x::y = 1::[] = [1] @ ys = [[1;2;3];[1;2];[1]]
 
 
-        printfn "23). powerset xs = %A" (powerset xs)
+        printfn "23). powerset xs = %A\n" (powerset xs)
 
                 
 
 
 
 problem23()
+
+let problem24()=
+
+    let xs = [[1;2;3];[4;5;6]]
+
+    let transpose xs = List.map(fun x -> List.map(fun x -> x::xs)) xs
+
+    printfn "24). transpose(xs,ys) = %A\n"(transpose xs)
+    
+problem24()
 
 
 let problem27()=
