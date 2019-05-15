@@ -223,4 +223,22 @@ let problem18()=
     
 problem18()
 
+
+let problem27()=
+
+
+   printfn "27). Context free grammars"
+   printfn "E -> E+T | E-T | T"
+   printfn "T -> T*F | T/F | F"
+   printfn "F -> i | (E)"
+   printfn "G -> G ^ F | G //highest precedence, right associative.\n" //left associative = G -> F ^ G | G
+    
+problem27()
+
+let problem28()=
+
+    printfn 
+
+problem28()
+
 Console.ReadKey() |> ignore
