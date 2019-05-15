@@ -5,6 +5,7 @@ open System.Runtime.Remoting.Metadata.W3cXsd2001
 open System.Runtime.Remoting.Metadata.W3cXsd2001
 open System.Linq.Expressions
 open System.Linq.Expressions
+open System.Runtime.InteropServices
 
 //problem set 1
 
@@ -262,6 +263,26 @@ problem22()
 let problem23()=
 
         let xs = [1;2;3]
+
+        let rec powerset = function
+            | [] -> [[]] //returns the needed empty set to the list
+            | x::xs -> let ys = powerset xs //creates a new list ys and calls powerset xs
+                       List.map(fun xs -> x::xs) ys @ ys //scrolls through xs and appends x to ys 
+
+
+        //visually ---
+        // xs = 1;2;3
+        // x::xs = (1::2;3)-> ys = powerset xs = 2;3
+        // List.map x::xs = 1::2;3
+        // x @ ys = [1;2;3]
+        // x::y = 1::2 = [1;2] @ ys = [[1;2;3];[1;2]]
+        // x::y = 1::3 = [1;3] @ ys = [[1;2;3];[1;2];[1;3]]
+        // x::y = 1::[] = [1] @ ys = [[1;2;3];[1;2];[1]]
+
+
+        printfn "23). powerset xs = %A" (powerset xs)
+
+                
 
 
 
