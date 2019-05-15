@@ -219,6 +219,20 @@ let problem18()=
 
     //PROBLEM 19***************************************
 
+    let xs = [1;2;3;4;5;6]
+
+    let rec gencut(n,xs) = function
+        | n, [] -> xs
+        | 0, xs -> xs
+        | n, x::xs -> x::gencut(n-1, xs)
+
+    let cut xs =
+        let n = (List.length xs) / 2
+        gencut(n,xs)
+
+    printfn "19). xs = %A"(xs)
+    printfn "     cut xs = %A" (cut xs)
+
 
     
 problem18()
@@ -237,7 +251,7 @@ problem27()
 
 let problem28()=
 
-    printfn 
+    printfn "28). "
 
 problem28()
 
