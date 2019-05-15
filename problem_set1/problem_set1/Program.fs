@@ -295,10 +295,11 @@ problem23()
 let problem24()=
 
     let xs = [[1;2;3];[4;5;6]]
+    
+    let head xs = List.map List.head xs
 
-    let transpose xs = List.map(fun x -> List.map(fun x -> x::xs)) xs
 
-    printfn "24). transpose(xs,ys) = %A\n"(transpose xs)
+    printfn "24). transpose(xs,ys) = %A\n"(head xs)
     
 problem24()
 
