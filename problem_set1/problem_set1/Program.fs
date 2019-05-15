@@ -296,7 +296,10 @@ let problem24()=
 
     let xs = [[1;2;3];[4;5;6]]
     
-    let transpose xs = List.map(fun x -> x::(List.tail xs))
+    let rec transpose = function
+        | [] -> xs
+        | xs -> (List.map List.head xs)::transpose(List.tail xs)
+
 
 
 
@@ -337,6 +340,32 @@ let problem25()=
     printfn "25). Answer is commented out in the code...\n"
 
 problem25()
+
+//let problem26()=
+
+    (*
+    
+    let rec merge = function
+	    | ([], ys)       -> ys
+	    | (xs, [])       -> xs
+	    | (x::xs, y::ys) -> if x < y then x :: merge (xs, y::ys)
+            else y :: merge (x::xs, ys)
+
+	    let rec split = function
+	    | []       -> ([], [])
+	    | [a]      -> ([a], [])
+	    | a::b::cs -> let (M,N) = split cs
+            (a::M, b::N)
+
+	    let rec mergesort = function
+	    | []  -> []
+	    | L   -> let (M, N) = split L
+            merge (mergesort M, mergesort N)
+    
+    *)
+
+
+//problem26()
 
 
 let problem27()=
