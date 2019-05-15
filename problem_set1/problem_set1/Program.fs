@@ -154,11 +154,32 @@ let problem15()=
     printfn "  a). fun f -> String.length (f \"cat\") values to (string -> string) -> int"
     printfn "  b). fun x y -> x \" \" + y values to string -> string -> string"
     printfn "  c). fun f -> f (f \"cat\") values to (string -> string) -> string"
-    printfn "  d). fun f -> f \"cat\" values to (string -> 'a) -> 'a"
+    printfn "  d). fun f -> f \"cat\" values to (string -> 'a) -> 'a\n"
 
 problem15()
 
+let problem16()=
 
+    //auxiliary function
+    let rec gcd = function
+    |(a, 0) -> a //if tuple is (a, 0) return a
+    |(a,b) -> gcd(b, a%b) //else call gcd with tuple (b, a%b)
+
+    let (.+) (a,b) (c,d) =
+        let top = (a * d) + (b * c) //cross multiply and add
+        let bottom = (b * d) //mutilpy bottom denominators
+        (top/gcd(top,bottom), bottom/gcd(top,bottom)) //get gcd 
+
+    let (.*) (a,b) (c,d) =
+        let top = (a * c) //multiply top
+        let bottom = (b * d) //multiply bottom
+        (top/gcd(top,bottom), bottom/gcd(top,bottom)) //get gcd 
+
+    printfn "16) (1,2) (.+) (1,3) = %A" ((.+) (1,2) (1,3))
+    printfn "    (1,2) (.+) (1,3) (.*) (3,7) = %A" ((.*) (3,7) ((.+) (1,2) (1,3))) //why is it not 11? FIX ME
+
+
+problem16()
 
 
 Console.ReadKey() |> ignore
