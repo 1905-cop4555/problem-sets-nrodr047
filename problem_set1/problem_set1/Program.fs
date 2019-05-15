@@ -296,12 +296,47 @@ let problem24()=
 
     let xs = [[1;2;3];[4;5;6]]
     
-    let head xs = List.map List.head xs
+    let transpose xs = List.map(fun x -> x::(List.tail xs))
 
 
-    printfn "24). transpose(xs,ys) = %A\n"(head xs)
+
+    printfn "24). transpose(xs,ys) = %A\n"(transpose xs)
     
 problem24()
+
+
+let problem25()=
+
+    (*
+   
+   let rec sort = function
+	    | []         -> []
+	    | [x]        -> [x]
+	    | x1::x2::xs -> if x1 <= x2 then x1 :: sort (x2::xs)
+            else x2 :: sort (x1::xs)
+    *)
+
+    //1. All basecases are correct - Yes, they are.
+    //2. Assume the recursion call works - The recursion call does not sort correctly
+            (*
+                
+                    1 :: sort [3;4;1;5;9;2;6;5]
+                    3 :: sort [4;1;5;9;2;6;5]
+                    1 :: sort [4;5;9;2;6;5]
+                    4 :: sort [5;9;2;6;5]
+                    5 :: sort [9;2;6;5]
+                    2 :: sort [9;6;5]
+                    6 :: sort [9;5]]
+                    5 :: sort [9]
+                    9 :: Base case\n
+                
+            *)
+    //3. The recursion call is smaller than the input - Yes, they are smaller.
+    //4. All basecases are covered - Yes.
+
+    printfn "25). Answer is commented out in the code...\n"
+
+problem25()
 
 
 let problem27()=
