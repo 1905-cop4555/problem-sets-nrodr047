@@ -1,6 +1,8 @@
 ﻿open System
 open System.Runtime.InteropServices
 open System.Diagnostics
+open System.Runtime.Remoting.Metadata.W3cXsd2001
+open System.Runtime.Remoting.Metadata.W3cXsd2001
 
 //problem set 1
 
@@ -194,5 +196,31 @@ let problem17()=
 
 problem17()
 
+
+let problem18()=
+
+    //problem 18 - 21
+
+
+    //PROBLEM 18***************************************
+    let xs = [1;2;3]
+    let ys = [4;5;6]
+
+    //takes a tuple
+    let rec interleave = function
+        | ([],ys) -> ys //if xs is empty return ys
+        | (xs,[]) -> xs //if ys is empty return xs
+        | (x::xs, y::ys) -> x::y::interleave(xs,ys) //take heads from list and call interleave for tail
+    
+    printfn "18). xs = %A"(xs)
+    printfn "     ys = %A"(ys)
+    printfn "     interleave(xs,ys) = %A\n" (interleave(xs,ys))
+
+
+    //PROBLEM 19***************************************
+
+
+    
+problem18()
 
 Console.ReadKey() |> ignore
