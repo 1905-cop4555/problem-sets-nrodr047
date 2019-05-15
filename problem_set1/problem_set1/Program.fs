@@ -3,6 +3,8 @@ open System.Runtime.InteropServices
 open System.Diagnostics
 open System.Runtime.Remoting.Metadata.W3cXsd2001
 open System.Runtime.Remoting.Metadata.W3cXsd2001
+open System.Linq.Expressions
+open System.Linq.Expressions
 
 //problem set 1
 
@@ -219,12 +221,13 @@ let problem18()=
 
     //PROBLEM 19***************************************
 
-    let xs = [1;2;3;4;5;6]
+    (* let xs = [1;2;3;4;5;6]
 
     let rec gencut(n,xs) = function
         | n, [] -> xs
         | 0, xs -> xs
-        | n, x::xs -> x::gencut(n-1, xs)
+        | n, x::xs -> let small = x::gencut(n-1, xs)
+
 
     let cut xs =
         let n = (List.length xs) / 2
@@ -233,9 +236,36 @@ let problem18()=
     printfn "19). xs = %A"(xs)
     printfn "     cut xs = %A" (cut xs)
 
+    //PROBLEM 20 **************************************** *)
+
+
 
     
 problem18()
+
+let problem22()=
+
+    let xs = ["a";"b";"c"]
+    let ys = [1;2]
+
+    let cartesian(xs,ys) = List.map(fun x -> List.map(fun y -> (x,y))ys)xs
+
+    //Notes:
+    // Maps through the x in list xs
+    // Maps x to y in list ys
+    // and makes a tuple - cartesian pair
+
+    printfn "22). cartesian(xs,ys) = %A\n" (cartesian(xs,ys))
+
+problem22()
+
+let problem23()=
+
+        let xs = [1;2;3]
+
+
+
+problem23()
 
 
 let problem27()=
