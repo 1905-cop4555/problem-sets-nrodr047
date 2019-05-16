@@ -297,10 +297,8 @@ let problem24()=
     let xs = [[1;2;3];[4;5;6]]
     
     let rec transpose = function
-        | [] -> xs
-        | xs -> (List.map List.head xs)::transpose(List.tail xs)
-
-
+        | [[];_] -> []
+        | xs -> List.map List.head xs::transpose(List.map List.tail xs)
 
 
     printfn "24). transpose(xs,ys) = %A\n"(transpose xs)
