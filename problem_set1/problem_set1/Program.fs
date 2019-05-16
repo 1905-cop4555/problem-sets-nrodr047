@@ -379,7 +379,18 @@ problem27()
 
 let problem28()=
 
-    printfn "28). "
+    printfn "28). S -> if (E) S
+                    -> if (E) S else S
+                    -> begin S L 
+                    -> print E
+                    
+     AMBIGOUS:        if
+                    E    if
+                       E  S  S
+           if 
+         E    S
+           if
+          E  S"
 
 problem28()
 
