@@ -339,7 +339,7 @@ let problem25()=
 
 problem25()
 
-//let problem26()=
+let problem26()=
 
     (*
     
@@ -362,8 +362,14 @@ problem25()
     
     *)
 
+    printfn "26). F# infers that mergesort is a ('a list -> b' list) creating a whole separate type list
+    when it should be 'a list -> a list while sorting the same list.
+    I believe that the recursive call to mergesort is incorrect (step 3). I think that the
+    call would make a type of infinite loop. I think mergesort( merge M, merge N) would work."
 
-//problem26()
+
+
+problem26()
 
 
 let problem27()=
