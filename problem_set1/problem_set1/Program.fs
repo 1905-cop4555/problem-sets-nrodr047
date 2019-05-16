@@ -35,9 +35,11 @@ let problem2()=
 
 problem2()
 
-//let problem3()=
+let problem3()=
 
-//problem3()
+     printfn "3). ANSWER: A\n    (float -> float) -> bool\n     is not a legal type\n"
+            // let notLegal = (4.5 + 3.2) = true 
+problem3()
 
 let problem4() = 
     printfn "4). ANSWER: B"
