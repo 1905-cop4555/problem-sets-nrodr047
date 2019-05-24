@@ -3,6 +3,8 @@
 
 open System
 
+
+
 let problem1() =
 
     //TUPLE SIGNATURE: ('a * 'b) -> 'c
@@ -23,5 +25,15 @@ let problem1() =
 
 
 problem1()
+
+type 'a Coordinates=
+    | Tuple of x: 'a * y: 'a
+    | Threeple of x: 'a * y: 'a * z: 'a
+    | Fourple of x: 'a * y: 'a * z: 'a * w: 'a
+    
+let problem2()=
+
+
+problem2()
 
 Console.ReadKey() |> ignore
