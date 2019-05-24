@@ -18,8 +18,11 @@ let problem1() =
     let curry f = (fun(x,y)->f x y)
     // value: ('a -> 'b -> 'c) -> ('a * 'b -> 'c)
 
-    let plus = curry (+)
-    plus (2,3)
+    let plus = uncurry (+)
+
+
+    printfn("PROBLEM 1:")
+    printfn ("plus(2,3) = \n")
 
 
 
@@ -32,6 +35,24 @@ type 'a Coordinates=
     | Fourple of x: 'a * y: 'a * z: 'a * w: 'a
     
 let problem2()=
+
+    printfn("PROBLEM 2:")
+
+    let cmatch x =
+        match x with
+        | Tuple(x,y)-> printfn("Tuple(%A,%A)") x y
+        | Threeple(x,y,z) -> printfn("Threeple(%A,%A,%A)") x y z
+        | Fourple(x,y,z,w) -> printfn("Fourple(%A,%A,%A,%A)")x y z w
+
+    let tup = Tuple(1,2) //tuple of ints
+    cmatch tup
+
+    let thr = Threeple(1.0,2.0,3.0) //threeple for floats 
+    cmatch thr
+
+    let four = Fourple("This", "is", "a", "fourple\n")
+    cmatch four
+
 
 
 problem2()
