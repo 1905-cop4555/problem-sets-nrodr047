@@ -164,6 +164,18 @@ let problem5()=
         let nontail = product x y
         printfn("\nPROBLEM 5).")
         printfn("Non-tail recursive product = %A") nontail
+
+
+        let rec product_tail a b acc =
+            match (a,b) with
+            | ([],[]) -> acc //tail recursion basecase where once there is an empty list, function returns the accumulator
+            | (_,[]) -> failwith ("Vectors are of different lengths") //basecase if x is shorter
+            | ([],_) -> failwith ("Vectors are of different lengths") //basecase if y is shorter
+            | (x::xs,y::ys) -> product_tail xs ys (acc + (x * y)) //the recursive call with the product being the accumulator
+
+        //the accumulator will begin with 0
+        let tail = product_tail x y 0
+        printfn("Tail recursive product = %A")tail
         
 
 problem5()
