@@ -120,6 +120,15 @@ let problem3()=
     let prog2 = test_program tokens_prog2
     printfn("Program 2: %A") prog2
 
+    //third program, causes error
+    //let tokens_prog3 = [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PRINT;ID;EOF]
+   // let prog3 = test_program tokens_prog3
+   // printfn("Program 3: %A")prog3
+
 problem3()
+
+let problem4()=
+
+problem4()
 
 Console.ReadKey() |> ignore
