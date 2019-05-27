@@ -2,6 +2,10 @@
 // See the 'F# Tutorial' project for more help.
 
 open System
+open System.Runtime.Remoting.Metadata.W3cXsd2001
+open System.Runtime.Remoting.Metadata.W3cXsd2001
+open System.Runtime.Remoting.Metadata.W3cXsd2001
+open System.Runtime.Remoting.Metadata.W3cXsd2001
 
 
 
@@ -56,5 +60,37 @@ let problem2()=
 
 
 problem2()
+
+type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
+
+let problem3()=
+
+
+    //write a syntax checker
+
+    //eat token function from lecture video
+    let eat token = function
+    | []-> failwith "Premature termination of input" //message displayed upon empty list
+    | x::xs ->
+        if x = token //if tokens match 
+        then xs //then take token and return tail of list of tokens
+        else failwith(sprintf "want %A, got %A" token x) //message displayed if they don't match
+
+    //S function from lecture video
+    let rec S = function
+    | []-> failwith "Premature termination of input"
+    | x::xs ->
+        match x with
+        | IF -> xs |> S |> eat ID |> eat THEN |> S |> eat ELSE |> S  //IF returns tail, expects ID, THEN, passes to S, expects else, passes to S
+        | 
+
+
+    let test_program program =
+      let result = program |> S
+      match result with 
+      | [] -> failwith "Early termination or missing EOF"
+      | x::xs -> if x = EOF then accept() else error()
+
+problem3()
 
 Console.ReadKey() |> ignore
