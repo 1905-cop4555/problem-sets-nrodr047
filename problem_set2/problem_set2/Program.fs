@@ -22,8 +22,6 @@ let problem1() =
     let curry f = (fun(x,y)->f x y)
     // value: ('a -> 'b -> 'c) -> ('a * 'b -> 'c)
 
-    let plus = uncurry (+)
-
 
     printfn("PROBLEM 1:")
     printfn ("plus(2,3) = \n")
@@ -63,6 +61,10 @@ problem2()
 
 type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
 
+type Result<'a> =
+    |Success of 'a
+    |Failure of String
+
 let problem3()=
 
 
@@ -78,18 +80,31 @@ let problem3()=
 
     //S function from lecture video
     let rec S = function
-    | []-> failwith "Premature termination of input"
-    | x::xs ->
+    | []-> failwith "Premature termination of input" //message upon empty list
+    | x::xs -> //matching the head token and piping them through
         match x with
-        | IF -> xs |> S |> eat ID |> eat THEN |> S |> eat ELSE |> S  //IF returns tail, expects ID, THEN, passes to S, expects else, passes to S
-        | 
+        | IF -> xs |> eat ID |> eat THEN |> S |> eat ELSE |> S  //IF returns tail, expects ID, THEN, passes to S, expects else, passes to S
+        | BEGIN -> xs |> S //tail passes to S
+        | SEMICOLON -> xs |> S
+        | PRINT -> xs |> eat ID //tail passes to S, eats ID then passes to S
+        | EOF -> x::xs
+        | _-> failwith (sprintf "wanted IF, BEGIN, PRINT, or EOF, got %A" x) //fail message
 
+    let accept() = Success "Program Accepted." // successful program
+    let error() = Failure "Program failed"
 
+    //function from problem set
     let test_program program =
       let result = program |> S
       match result with 
       | [] -> failwith "Early termination or missing EOF"
       | x::xs -> if x = EOF then accept() else error()
+
+    //first program 
+    let tokens_prog1 = [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
+    let prog1 = test_program tokens_prog1
+    printf("PROBLEM 3).")
+    printf("Program 1: %A") prog1
 
 problem3()
 
