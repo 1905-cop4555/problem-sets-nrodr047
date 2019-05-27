@@ -52,7 +52,7 @@ let problem2()=
     let thr = Threeple(1.0,2.0,3.0) //threeple for floats 
     cmatch thr
 
-    let four = Fourple("This", "is", "a", "fourple\n")
+    let four = Fourple("This", "is", "a", "fourple")
     cmatch four
 
 
@@ -84,11 +84,20 @@ let problem3()=
     | x::xs -> //matching the head token and piping them through
         match x with
         | IF -> xs |> eat ID |> eat THEN |> S |> eat ELSE |> S  //IF returns tail, expects ID, THEN, passes to S, expects else, passes to S
-        | BEGIN -> xs |> S //tail passes to S
-        | SEMICOLON -> xs |> S
+        | BEGIN -> xs |> S |> L //tail passes to S, passes to L
         | PRINT -> xs |> eat ID //tail passes to S, eats ID then passes to S
         | EOF -> x::xs
         | _-> failwith (sprintf "wanted IF, BEGIN, PRINT, or EOF, got %A" x) //fail message
+
+    //lookahead function 
+    and L = function
+    | [] -> failwith "Premature termination of input"
+    | x::xs ->
+        match x with
+        | END -> xs
+        | SEMICOLON -> xs |> S |> L
+        |_-> failwith (sprintf "wanted END or SEMICOLON, got %A" x)
+
 
     let accept() = Success "Program Accepted." // successful program
     let error() = Failure "Program failed"
@@ -103,8 +112,11 @@ let problem3()=
     //first program 
     let tokens_prog1 = [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
     let prog1 = test_program tokens_prog1
-    printf("PROBLEM 3).")
-    printf("Program 1: %A") prog1
+    printfn("\nPROBLEM 3).")
+    printfn("Program 1: %A") prog1
+
+    //second program
+    let tokens_prog2 = 
 
 problem3()
 
