@@ -116,7 +116,9 @@ let problem3()=
     printfn("Program 1: %A") prog1
 
     //second program
-    let tokens_prog2 = 
+    let tokens_prog2 = [IF;ID;THEN;IF;ID;THEN;PRINT;ID;ELSE;PRINT;ID;ELSE;BEGIN;PRINT;ID;END;EOF]
+    let prog2 = test_program tokens_prog2
+    printfn("Program 2: %A") prog2
 
 problem3()
 
