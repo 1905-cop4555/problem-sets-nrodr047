@@ -127,8 +127,45 @@ let problem3()=
 
 problem3()
 
-let problem4()=
+(*let problem4()=
 
-problem4()
+    //make a syntax checker
+    //Use suggestion in the notes to get around more than one lookahead
+    //E -> E + T | E - T | T
+    //T -> T * F | T / F | F
+    //F -> i | (E)
+
+
+
+
+problem4()*)
+
+let problem5()=
+    (*Write a curried F# function inner that takes two vectors represented as int list and returns their inner product.
+        Throw an exception if the lists do not have the same length.
+        Do not use any built-in or borrowed functions. Write it from scratch.
+        Use big integers.
+        Write a version without using tail recursion.
+        Write another version using tail recursion.
+        Try both versions on the input [1I..50000I] [50001I..100000I]. Increase the ranges until you get stack overflow on the non-tail-recursive version.*)
+
+        //without tail recursion
+
+        let x = [1;2;3]
+        let y = [4;5;6]
+
+        let rec product x y =
+            match (x,y) with
+            | ([],[]) -> []
+            | (_,[]) -> failwith ("Vectors are of different lengths")
+            | ([],_) -> failwith ("Vectors are of different lengths")
+            | (x::xs, y::ys) -> (x * y) + product xs ys
+
+        let nontail = product x y
+        printfn("PROBLEM 5).")
+        printfn("Non-tail recursive product = %A")nontail
+        
+
+problem5()
 
 Console.ReadKey() |> ignore
