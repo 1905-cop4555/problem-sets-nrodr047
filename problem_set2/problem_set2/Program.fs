@@ -52,7 +52,7 @@ let problem2()=
     let thr = Threeple(1.0,2.0,3.0) //threeple for floats 
     cmatch thr
 
-    let four = Fourple("This", "is", "a", "fourple")
+    let four = Fourple("This", "is", "a", "fourple") //fourple of strings
     cmatch four
 
 
@@ -84,7 +84,7 @@ let problem3()=
     | x::xs -> //matching the head token and piping them through
         match x with
         | IF -> xs |> eat ID |> eat THEN |> S |> eat ELSE |> S  //IF returns tail, expects ID, THEN, passes to S, expects else, passes to S
-        | BEGIN -> xs |> S |> L //tail passes to S, passes to L
+        | BEGIN -> xs |> S |> L //tail passes to S, passes to lookahead
         | PRINT -> xs |> eat ID //tail passes to S, eats ID then passes to S
         | EOF -> x::xs
         | _-> failwith (sprintf "wanted IF, BEGIN, PRINT, or EOF, got %A" x) //fail message
@@ -154,16 +154,16 @@ let problem5()=
         let x = [1;2;3]
         let y = [4;5;6]
 
-        let rec product x y =
-            match (x,y) with
-            | ([],[]) -> []
-            | (_,[]) -> failwith ("Vectors are of different lengths")
-            | ([],_) -> failwith ("Vectors are of different lengths")
-            | (x::xs, y::ys) -> (x * y) + product xs ys
+        let rec product a b =
+            match (a,b) with
+            | ([],[]) -> 0                                           //basecase if empty list
+            | (_,[]) -> failwith ("Vectors are of different lengths") //basecase if x diff length
+            | ([],_) -> failwith ("Vectors are of different lengths") //basecase if y diff length
+            | (x::xs,y::ys) -> x * y + product xs ys  //recursive call
 
         let nontail = product x y
-        printfn("PROBLEM 5).")
-        printfn("Non-tail recursive product = %A")nontail
+        printfn("\nPROBLEM 5).")
+        printfn("Non-tail recursive product = %A") nontail
         
 
 problem5()
