@@ -154,30 +154,53 @@ let problem5()=
         let x = [1;2;3]
         let y = [4;5;6]
 
-        let rec product a b =
+        let rec inner a b =
             match (a,b) with
             | ([],[]) -> 0                                           //basecase if empty list
             | (_,[]) -> failwith ("Vectors are of different lengths") //basecase if x diff length
             | ([],_) -> failwith ("Vectors are of different lengths") //basecase if y diff length
-            | (x::xs,y::ys) -> x * y + product xs ys  //recursive call
+            | (x::xs,y::ys) -> x * y + inner xs ys  //recursive call
 
-        let nontail = product x y
+        let nontail = inner x y
         printfn("\nPROBLEM 5).")
         printfn("Non-tail recursive product = %A") nontail
 
 
-        let rec product_tail a b acc =
+        let rec inner_tail a b acc =
             match (a,b) with
             | ([],[]) -> acc //tail recursion basecase where once there is an empty list, function returns the accumulator
             | (_,[]) -> failwith ("Vectors are of different lengths") //basecase if x is shorter
             | ([],_) -> failwith ("Vectors are of different lengths") //basecase if y is shorter
-            | (x::xs,y::ys) -> product_tail xs ys (acc + (x * y)) //the recursive call with the product being the accumulator
+            | (x::xs,y::ys) -> inner_tail xs ys (acc + (x * y)) //the recursive call with the product being the accumulator
 
         //the accumulator will begin with 0
-        let tail = product_tail x y 0
+        let tail = inner_tail x y 0
         printfn("Tail recursive product = %A")tail
         
 
 problem5()
+
+(*let problem6()= 
+(*              / 0 1 \
+/ 1 2 3 \  *  | 3 2 |  =  /  9 11 \
+\ 4 5 6 /     \ 1 2 /     \ 21 26 /
+Write an uncurried F# function to do matrix multiplication:
+
+  > multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]]);;
+    val it : int list list = [[9; 11]; [21; 26]]*)
+
+
+problem6()*)
+
+type Record = {Name: string; Credits: int; GPA: float}
+let problem12()=
+    let student = {Name = "Jones"; Credits=109; GPA= 3.85}
+    
+    printfn("\nPROBLEM 12).")
+    printfn("Student = %A") student
+
+problem12()
+
+
 
 Console.ReadKey() |> ignore
