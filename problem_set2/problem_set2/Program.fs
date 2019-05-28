@@ -219,7 +219,7 @@ Write an uncurried F# function to do matrix multiplication:
 problem6()
 
 let problem7()=
-   (* let rec oddeven = function
+   (*let rec oddeven = function
         |[] -> []                       //O(1) constant time
 |       |x::xs -> if x % 2 = 0          //O(1) constant time
            then oddeven xs @ [x]        //O(n^2) 
@@ -229,6 +229,31 @@ let problem7()=
     printfn("Time complexity = O(n^2)")
 
 problem7()
+
+let problem8()=
+
+    //val fold : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
+    let rec fold f a = function
+    | []    -> a                    //O(1) work
+    | x::xs -> fold f (f a x) xs    // fold f (f a x) = n + 1
+                                    // fold f xs = n + 1
+                                    // So, (n+1 * n+1) * O(1) = O(n^2)
+
+    //val foldBack : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b                                   
+    let rec foldBack f xs a =
+      match xs with
+      | []    -> a                       //O(1) work
+      | y::ys -> f y (foldBack f ys a) // n + 1   -list is included -    So, O(1) * (n+1) = O(n)
+      
+    let flatten1 xs = fold (@) [] xs  
+
+    let flatten2 xs = foldBack (@) xs []
+   
+    printfn("\nProblem 8:")
+    printfn("Time complexity for flatten1 : O(n^2)")
+    printfn("Time complexity for flatten2 : O(n)")
+
+problem8()
 
 type Record = {Name: string; Credits: int; GPA: float}
 
