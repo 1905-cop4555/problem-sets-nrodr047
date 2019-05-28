@@ -55,6 +55,14 @@ let problem2()=
     let four = Fourple("This", "is", "a", "fourple") //fourple of strings
     cmatch four
 
+    let op(coordinate,binaryop) =
+        match coordinate with
+        |Tuple(a,b) -> binaryop a b
+        |Threeple(a,b,c) -> binaryop(binaryop a b) c
+        |Fourple(a,b,c,d)-> binaryop(binaryop(binaryop a b)c)d
+
+    
+
 
 
 problem2()
@@ -254,6 +262,8 @@ let problem8()=
     printfn("Time complexity for flatten2 : O(n)")
 
 problem8()
+
+
 
 type Record = {Name: string; Credits: int; GPA: float}
 
