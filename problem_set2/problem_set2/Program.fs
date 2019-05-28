@@ -55,13 +55,13 @@ let problem2()=
     let four = Fourple("This", "is", "a", "fourple") //fourple of strings
     cmatch four
 
-    let op(coordinate,binaryop) =
+    (*let op(coordinate,binaryop) =
         match coordinate with
         |Tuple(a,b) -> binaryop a b
         |Threeple(a,b,c) -> binaryop(binaryop a b) c
         |Fourple(a,b,c,d)-> binaryop(binaryop(binaryop a b)c)d
 
-    
+    *)
 
 
 
@@ -263,7 +263,41 @@ let problem8()=
 
 problem8()
 
+type 'a option = None | Some of 'a
 
+let problem9()=
+
+    //write a recursive function that returns the last element in its list parameter.
+    //using the option type to handle invalid input
+    //write a helper function that converts option to a string
+    //if option none then return invalid input
+    //otherwise use sprintf to convert value option to a string
+
+    let handle_op = function
+    | None -> "Invalid Input"              //handles invalid input
+    | Some x -> sprintf("%A") x            //converts value to a string
+
+    let rec last = function                //make a recursive function that returns the last element
+    | [] -> None                           //if the element is empty return None
+    | [x] -> Some x                        //if the element has a value, return value
+    | x::xs -> last xs                     //recursive call, makes input increasing smaller
+
+    let list1 = []
+    let list2 = ["cat"]
+    let list3 = [1;2;3;4;5]
+
+    let l1 = last list1
+    let l2 = last list2
+    let l3 = last list3
+
+    printfn("\nPROBLEM 9).")
+    printfn("The last element of %A is %A") list1 l1
+    printfn("The last element of %A is %A") list2 l2
+    printfn("The last element of %A is %A") list3 l3
+
+
+
+problem9()
 
 type Record = {Name: string; Credits: int; GPA: float}
 
