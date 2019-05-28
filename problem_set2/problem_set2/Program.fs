@@ -180,7 +180,7 @@ let problem5()=
 
 problem5()
 
-(*let problem6()= 
+let problem6()= 
 (*              / 0 1 \
 / 1 2 3 \  *  | 3 2 |  =  /  9 11 \
 \ 4 5 6 /     \ 1 2 /     \ 21 26 /
@@ -189,10 +189,29 @@ Write an uncurried F# function to do matrix multiplication:
   > multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]]);;
     val it : int list list = [[9; 11]; [21; 26]]*)
 
+    //transpose function from problem set 1
+    let rec transpose xs =
+        match xs with
+        | [] -> xs
+        | xs -> (List.map(fun x -> List.head x)xs)::transpose(List.map(fun x -> List.tail x)xs)
 
-problem6()*)
+    //inner function from earlier problem
+    let inner a b =
+        match (a,b) with
+        | ([],[]) -> 0
+        | (x::xs,y::ys) -> (x * y) + inner xs ys
+    
+    let matrix xs =
+        match xs with
+        |(_,[])-> [] //return y despite x
+        |([],_)-> [] 
+        |(x::xs,ys) -> 
+    
+
+problem6()
 
 type Record = {Name: string; Credits: int; GPA: float}
+
 let problem12()=
     let student = {Name = "Jones"; Credits=109; GPA= 3.85}
     
