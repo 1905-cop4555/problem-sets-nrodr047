@@ -323,7 +323,33 @@ let problem10()=
         | None,_ -> None
         | Some x, Some y -> Some (x + y) //returns the value of sum
     | Diff (a1, a2) -> 
-        match 
+        match evaluate a1, evaluate a2 with
+        | _, None -> None
+        | None, _ -> None
+        | Some x, Some y -> Some (x - y) //returns the value of diff
+    | Prod (a1, a2) ->
+        match evaluate a1, evaluate a2 with
+        | _, None -> None
+        | None, _ -> None
+        | Some x, Some y -> Some (x * y) // returns the value of product
+    | Quot (a1, a2) ->
+        match evaluate a1, evaluate a2 with
+        | _, None -> None
+        | None, _ -> None
+        | Some x, Some y ->
+            if (evaluate a2 = Some 0)      //case that handles x/0
+            then None
+            else match evaluate a1, evaluate a2 with
+            | _, None -> None
+            | None, _ -> None
+            | Some x, Some y -> Some ( x / y)  // returns divided value
+
+    let evaluate1 = evaluate (Prod(Num 3, Diff(Num 5, Num 1)))
+    let evaluate2 = evaluate (Diff(Num 3, Quot(Num 5, Prod(Num 7, Num 0))))
+
+    printfn ("\nPROBLEM 10). ")
+    printfn ("evaluate (Prod(Num 3, Diff(Num 5, Num 1))) = %A") evaluate1
+    printfn("evaluate (Diff(Num 3, Quot(Num 5, Prod(Num 7, Num 0)))) = %A") evaluate2
     
 
 problem10()
