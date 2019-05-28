@@ -181,7 +181,7 @@ let problem5()=
 problem5()
 
 let problem6()= 
-(*              / 0 1 \
+(*            / 0 1 \
 / 1 2 3 \  *  | 3 2 |  =  /  9 11 \
 \ 4 5 6 /     \ 1 2 /     \ 21 26 /
 Write an uncurried F# function to do matrix multiplication:
@@ -196,16 +196,24 @@ Write an uncurried F# function to do matrix multiplication:
         | xs -> (List.map(fun x -> List.head x)xs)::transpose(List.map(fun x -> List.tail x)xs)
 
     //inner function from earlier problem
-    let inner a b =
+    let rec inner a b =
         match (a,b) with
         | ([],[]) -> 0
         | (x::xs,y::ys) -> (x * y) + inner xs ys
     
-    let matrix xs =
+    let rec matrix xs =
         match xs with
         |(_,[])-> [] //return y despite x
         |([],_)-> [] 
-        |(x::xs,ys) -> 
+        |(x::xs,ys) -> let trans_list = transpose ys
+                       let inner_prod = List.map(fun y -> inner y x)trans_list
+                       inner_prod::matrix(xs,ys)
+    
+    let list1 = ([[1;2;3];[4;5;6]])
+    let list2 = ([[0;1];[3;2];[1;2]])
+
+    printfn("PROBLEM 6).")
+    //printfn("matrix multiply = %A") matrix(list1,list2)
     
 
 problem6()
