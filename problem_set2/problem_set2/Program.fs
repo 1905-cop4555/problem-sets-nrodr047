@@ -218,6 +218,18 @@ Write an uncurried F# function to do matrix multiplication:
 
 problem6()
 
+let problem7()=
+   (* let rec oddeven = function
+        |[] -> []                       //O(1) constant time
+|       |x::xs -> if x % 2 = 0          //O(1) constant time
+           then oddeven xs @ [x]        //O(n^2) 
+           else x :: oddeven xs*)       //O(n)
+
+    printfn("PROBLEM 7).")
+    printfn("Time complexity = O(n^2)")
+
+problem7()
+
 type Record = {Name: string; Credits: int; GPA: float}
 
 let problem12()=
