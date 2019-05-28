@@ -299,6 +299,35 @@ let problem9()=
 
 problem9()
 
+type Exp =
+    Num of int
+    | Neg of Exp
+    | Sum of Exp * Exp
+    | Diff of Exp * Exp
+    | Prod of Exp * Exp
+    | Quot of Exp * Exp
+
+let problem10()=
+
+    //write F# function 'evaluate' that take an abstract tree and returns result of evaluating it
+    //must address the posilibility of div by 0 (None)
+
+    let rec evaluate = function
+    | Num n -> Some n
+    | Neg a -> //if value is negative
+        match evaluate a with 
+        | Some x -> Some (-x) //get value x and make it negative
+    | Sum (a1, a2)-> //if value is sum
+        match evaluate a1, evaluate a2 with //match evaluate results with 
+        | _, None -> None //basecases if value is missing
+        | None,_ -> None
+        | Some x, Some y -> Some (x + y) //returns the value of sum
+    | Diff (a1, a2) -> 
+        match 
+    
+
+problem10()
+
 type Record = {Name: string; Credits: int; GPA: float}
 
 let problem12()=
