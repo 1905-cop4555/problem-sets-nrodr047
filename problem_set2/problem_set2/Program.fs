@@ -377,6 +377,11 @@ let problem12()=
     //Both children are Br nodes
 
 
+    //recursive function to find minimum
+    let rec findMin = function
+    |Br(n, Lf, _) -> n                                //if node has a left leaf, return node value
+    |Br(_, l, _) -> findMin l                         //if node has a left child, find the minimum of child node
+    |_-> "Not possible"                               //error
 
 
     //insert function from notes
