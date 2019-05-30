@@ -356,13 +356,45 @@ problem10()
 
 type Record = {Name: string; Credits: int; GPA: float}
 
-let problem12()=
+let problem11()=
     let student = {Name = "Jones"; Credits=109; GPA= 3.85}
     
     printfn("\nPROBLEM 12).")
     printfn("Student = %A") student
 
+problem11()
+
+type 'a tree = 
+    |Lf 
+    | Br of 'a * 'a tree * 'a tree
+
+let problem12()=
+    //BST that finds min value and removes that node
+    //HANDLE:
+    //value not in tree
+    //both children are leaves
+    //One child node is Br the other is Lf
+    //Both children are Br nodes
+
+
+
+
+    //insert function from notes
+    let rec insert n = function
+    | Lf            -> Br(n, Lf, Lf)
+    | Br(m, t1, t2) ->
+        if n < m then Br(m, insert n t1, t2)
+               else Br(m, t1, insert n t2)
+
+
+    //build tree function from notes
+    let rec buildtree = function
+    | []    -> Lf
+    |x::xs -> insert x (buildtree xs)
+
+
 problem12()
+
 
 
 
