@@ -6,7 +6,7 @@ type linkedList<'a> =
     | E
     | L of 'a * linkedList<'a>
 
-let problem1()=
+(*let problem1()=
     //write a function that converts a list into a linked list of nodes
 
     let rec aList = function
@@ -114,28 +114,44 @@ let problem4()=
     
     ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
         
-        i     2*j + i    j
-        5                8
-        5     2*8 + i    8
-        5     16 + i     8
-        5     16 + 5     8
-        5       21       8
-        21               8
+        (M,e) => M'
+
+        {i=5; j=8}, i:= 2*j +i => {i=21; j=8}
+        ------------------------------------
+        (M, i:=2*j+i) => {i = 21; j=8}
+        
 
 
 
+    ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
 
-
-
-({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
-({i=1; j=10}, while (3*i <= j) do i := 3*i) => {i=9; j=10}
+    
+    ({i=1; j=10}, while (3*i <= j) do i := 3*i) => {i=9; j=10}
     
     *)
 
 
 
 
-problem4()
+problem4() *)
+
+
+let problem5()=
+
+    let rec interleave x y acc =
+        match (x,y) with
+        | ([],[]) -> acc
+        | ([],_) -> failwith "Different lengths"
+        | (_,[]) -> failwith "Different lengths"
+        | (x::xs, y::ys) -> x::y::interleave xs ys (acc)
+
+    let x = [1;2;3]
+    let y = [4;5;6]
+
+    let inter = interleave x y []
+
+    printfn("Problem 5: interleave x y = %A") inter
+problem5()
 
 
 Console.ReadKey() |> ignore
