@@ -384,6 +384,8 @@ let problem12()=
     |_-> "Not possible"                               //error
 
 
+
+
     //insert function from notes
     let rec insert n = function
     | Lf            -> Br(n, Lf, Lf)
