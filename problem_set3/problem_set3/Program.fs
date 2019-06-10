@@ -1,6 +1,4 @@
-﻿// Learn more about F# at http://fsharp.org
-// See the 'F# Tutorial' project for more help.
-
+﻿
 open System
 
 //create discriminated union that can represent a simple linked list of ints
@@ -33,11 +31,105 @@ Show the two derivation trees for the string in part (b).
     
     *)
 
-    //
+    // If string starts with 0 then, 0AA or eat 1. If string starts with 1 then 1BB or eat 0. 
+    (*
+        S
+      A   S
+     A
+    
+    
+    *)
 
 problem2()
 
+let problem3()=
 
+    (*
+
+    Write a CFG to recognize palindromes over the alphabet {a, b, |}, with the bar in the middle.
+Write a parse function that accepts a string and generates tokens for the language.
+Write a syntax checker that verifies if a list of tokens represents a palindrome.
+Extend the syntax checker so it generates an abstract syntax tree and displays it, for valid palindromes.
+    
+    *)
+
+    // S -> aSa | bSb | a | b | i
+
+problem3()
+
+
+let problem4()=
+
+    (*
+    
+    Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
+[When writing derivations, I tend to set a variable to the current state of memory, to save typing. My derivations are six lines, six lines, and 22 lines.]
+
+
+        ************************RULES FROM LECTURE NOTES****************************************
+
+            (M,n) => M                          *an integer literal n evaluates to n, regardless of memory
+
+            hypothesis
+            ----------
+            conclusion
+
+            (M, skip) => M                      *rule for skip
+
+            x is in dom(M)  (M,e)=>n
+            ------------------------             *notation M[x:=n] denotes a new memory where x is in n
+            (M, x:=e) => M[x:=n]                 * all other variables have same value in M
+                                                    *EXAMPLE:
+                                                        {x=5, y=2} [x:=7] = {x=7, y=2}  *new memory hold new value*
+            
+            (M, c1) => M'  (M',c2) => M''
+            -----------------------------        *Rule of sequential
+            (M, c1;c2) => M''                       *EXAMPLE:
+                                                        ({i=7, j=5}, i:=i+1, i:=2*i+j) => {i=21, j=5}
+                                                                    7 + 1 = 8
+                                                                    2 * 8 + 5 = 21
+
+            
+            (M,e) => n  n nonzero (M,c1) => M'
+            ----------------------------------     *Rule 1 of if then else
+            (M, if e then c1 else c2) => M'
+
+            (M,e) => 0 (M,c2) => M' 
+            -----------------------                 *Rule 2 of if then else
+            (M, if e then c1 else c2) => M'
+
+
+            (M,e) => 0
+            ----------------                       *Rule for while e do c
+            (M, while e do c) => M
+
+
+            (M,e) => n nonzero (M,c)=> M' (M', while e do c) => M''
+            ------------------------------------------------------
+            (M, while e do c ) => M''
+
+      *******************************************************************************************************
+
+    
+    
+    ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
+        i := 2 * 8 + i
+        i := 2 * 8 + 5
+
+
+
+
+
+
+({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
+({i=1; j=10}, while (3*i <= j) do i := 3*i) => {i=9; j=10}
+    
+    *)
+
+
+
+
+problem4()
 
 
 Console.ReadKey() |> ignore
