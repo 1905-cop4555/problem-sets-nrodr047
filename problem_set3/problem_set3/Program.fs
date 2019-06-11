@@ -6,7 +6,7 @@ type linkedList<'a> =
     | E
     | L of 'a * linkedList<'a>
 
-(*let problem1()=
+let problem1()=
     //write a function that converts a list into a linked list of nodes
 
     let rec aList = function
@@ -113,17 +113,23 @@ let problem4()=
     
     
     ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
+       i is in the dom({i=5;j=8})               //first statement is an assignment
+       ({i=5;j=8}), i => 5                      // + operator simple rule, evaluate i  EQ1
+       ({i=5;j=8}), 2 => 2                      // constant is always a constant EQ2
+       ({i=5; j=8}), j => 8                     //j = 8, EQ1 & EQ2
+       ({i=5; j=8}), 2 * j => 2 * 8 = 16
+       ({i=5; j=8}), 16 + i => 16 + 5 = 21
+
         
-        (M,e) => M'
+   ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
+        ({i=3; j=8}, if (2 * i > j) then i is the the dom({i=5;j=8}) else j is in the dom(i=5; j=8})
+        ({i=3;j=8}), i => 3
+        ({i=3;j=8}), 2 => 2
+        ({i=3;j=8}), 2 * 3 => 6
+        ({i=3;j=8}), j => 8
+        ({i=3; j=8}), 6 > 8 => j = 2 * i
+        ({i=3; j=8}), j = 2 * 3 => 6
 
-        {i=5; j=8}, i:= 2*j +i => {i=21; j=8}
-        ------------------------------------
-        (M, i:=2*j+i) => {i = 21; j=8}
-        
-
-
-
-    ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
 
     
     ({i=1; j=10}, while (3*i <= j) do i := 3*i) => {i=9; j=10}
@@ -133,7 +139,7 @@ let problem4()=
 
 
 
-problem4() *)
+problem4()
 
 
 let problem5()=
@@ -151,7 +157,17 @@ let problem5()=
     let inter = interleave x y []
 
     printfn("Problem 5: interleave x y = %A") inter
+
+    //tail recursion is faster
+
 problem5()
+
+let problem5()=
+
+
+
+
+problem6()
 
 
 Console.ReadKey() |> ignore
