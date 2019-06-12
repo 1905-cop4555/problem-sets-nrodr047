@@ -222,15 +222,17 @@ let problem8()=
 
     let rec power n acc=             //where n is the big int
         match n with                 //match input with
-        | n when n=0 -> acc          // n when n = 0 return acc 
-        | n when n=1 -> 2I
-        | n when n>1 -> power(n-1) (acc + (2I * 2I))
+        | n when n=0I -> acc          // n when n = 0 return acc 
+        | n when n=1I -> 2I
+        | n when n>1I -> power(n-1I) (acc + (2I * 2I))
 
-    let pow = power 1 2I
+    let pow = power 1I 2I
 
     printfn "Problem 8: %A" pow
 
 problem8()
+
+
 
 
 
