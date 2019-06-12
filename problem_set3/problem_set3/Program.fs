@@ -233,7 +233,27 @@ let problem8()=
 problem8()
 
 
+let problem11()=
 
+    let fib n =
+        if n < 1 then failwith "n must be <= 1"
+        elif n = 1 then 0
+        else
+            let x = ref 0
+            let y = ref 1
+            while !y <= n do
+                let x1 = !y
+                let y1 = !x + !y
+                x := x1 
+                y := y1
+            !y
+
+ 
+
+    printfn"\n Problem 11: fib 11 = %A" fib 4
+
+
+problem11()
 
 
 
