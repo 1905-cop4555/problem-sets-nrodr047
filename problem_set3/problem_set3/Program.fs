@@ -1,5 +1,7 @@
 ﻿
 open System
+open System.Collections.Generic
+open System.Runtime.InteropServices
 
 //create discriminated union that can represent a simple linked list of ints
 type linkedList<'a> = 
@@ -291,7 +293,23 @@ let problem13()=
 
     
     //factorial code
-    //
+    // let factorial n
+    // if n = 0 then 1
+    // else n * factorial(n-1)
+
+    let (push, pop, top) = mkstack [2;3;4]
+
+
+    let factorial n = 
+        if n = 0 then push 1                 //if n = 0 push 1
+        else 
+            let i = ref 1                    //i = 1
+            while !i <= n do                 //while i <= n
+                push(fun x -> (pop() * !i))   //push tail
+            pop()
+
+    factorial 2
+
 
 problem13()
 
