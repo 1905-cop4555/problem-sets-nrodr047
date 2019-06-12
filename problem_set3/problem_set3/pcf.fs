@@ -10,6 +10,16 @@ open parser.Parse
 // are propagated, how rule (6) is implemented, and how stuck evaluations
 // are reported using F#'s sprintf function to create good error messages.
 let rec interp = function
+| NUM n -> NUM n
+| BOOL b -> BOOL b
+| SUCC -> SUCC
+| PRED -> PRED
+| ISZERO -> ISZERO
+| ERROR s -> ERROR s
+| IF (e1,e2,e3) -> 
+    match (interp e1) with
+    | BOOL true -> interp e2
+    | 
 | APP (e1, e2) ->
     match (interp e1, interp e2) with
     | (ERROR s, _)  -> ERROR s        // ERRORs are propagated
