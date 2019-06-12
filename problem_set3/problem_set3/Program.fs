@@ -254,7 +254,7 @@ let problem11()=
 
 problem11()
 
-type Student = {GPA: unit -> int; credit_hrs: int -> unit; grade_pts: int -> unit;}
+type Student = {grade_pts: float -> unit; credit_hrs: float -> unit; GPA: unit -> float}
 
 let problem12()=
     (*Using imperative F#, create a record type for a student. 
@@ -267,15 +267,15 @@ let problem12()=
 
 
     let student =
-        let credits = ref 0
-        let points = ref 0
-        {grade_pts = fun x -> points := !points + x;
+        let credits = ref 0.0
+        let points = ref 0.0
+        {
+        grade_pts = fun x -> points := !points + x;
         credit_hrs = fun y -> credits := !credits + y;
-        GPA = fun () -> !points/!credit;}
+        GPA = fun () -> (!points / !credits);}
 
-    student.GPA()
-    student.grade_pts 4
-    student.credit_hrs 3
+    student.grade_pts 4.0
+    student.credit_hrs 3.0
     student.GPA()
 
     
