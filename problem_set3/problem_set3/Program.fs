@@ -313,6 +313,39 @@ let problem13()=
 
 problem13()
 
+let problem14()=
+    (*
+    
+    { int *x;     //int* var (LETVAR)
+     int a[15];   //int* (LETARR)
+
+     *x = 7;
+    a[*x] = *x + 4;
+    } 
+    
+    CODE DERIVATION: a[*x] = *x + 4
+
+    E|-                 E(x) = int* var 
+                           -----------------(ID)
+                           E|-x = int* var
+                           -----------------(R-VAL)
+                           E|-x = int* var
+                           -----------------(L-VAL)
+                           E|-*x = int var
+                           -----------------(R-VAL)
+                           E|-*x :int var   E|- 4 : int (LIT)
+                           -----------------------------(ADD)
+
+
+
+
+    
+    *)
+
+    
+
+problem14()
+
 
 
 Console.ReadKey() |> ignore
