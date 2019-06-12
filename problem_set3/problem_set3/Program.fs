@@ -240,16 +240,16 @@ let problem11()=
         else
             let x = ref 1                //fib = 1
             let y = ref 1                //fibPrev = 1
-            let mutable i = 2            // i = 2
-            while i <= n do             //while i < n do
+            let i = ref 2           // i = 2
+            while !i <= n do             //while i < n do
                 let tmp = !x            // tmp = fib
                 x := !x + !y            // fib = fib + fibPrev
                 y := tmp                // fibPrev = tmp
-                i <- i + 1
+                i := !i + 1
             !x
 
 
-    fib 6 //gives me an error
+    fib 6
 
 
 problem11()
@@ -280,6 +280,12 @@ let problem12()=
 
     
 problem12()
+
+let problem13()=
+
+
+
+problem13()
 
 
 
