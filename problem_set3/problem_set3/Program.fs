@@ -222,15 +222,15 @@ let problem8()=
     (*Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
     Calculate these powers of 2I: 0I, 1I, 2I, 4I, 16I, 256I, 1024I, 32768I and 655*)
 
-    let rec power n acc=             //where n is the big int
+    let rec power acc n=             //where n is the big int
         match n with                 //match input with
         | n when n=0I -> acc          // n when n = 0 return acc 
-        | n when n=1I -> 2I
-        | n when n>1I -> power(n-1I) (acc + (2I * 2I))
+        | n -> let acc = 2I*acc
+               power acc (n-1I)
 
-    let pow = power 1I 2I
+    let pow n = power 1I n
 
-    printfn "Problem 8: %A" pow
+    pow 4I
 
 problem8()
 
@@ -312,9 +312,9 @@ let problem13()=
 
 
 problem13()
-
+(*
 let problem14()=
-    (*
+    
     
     { int *x;     //int* var (LETVAR)
      int a[15];   //int* (LETARR)
@@ -339,14 +339,27 @@ let problem14()=
    ---------------------------------------------------------------(ASSIGN)
    E|- a[*x] = *x + 4 : int
 
-
-    
-    *)
-
-    
-
 problem14()
+*)
 
+
+
+let problem15()=
+
+        //First, explain why F# does not allow the following declaration:
+            //let mrev = makeMonitoredFun List.rev
+
+    //ANSWER a). This is not allowed due to F#'s value restriction. The above expression is not a syntactic value. 
+           // It is too generic and cannot be evaluated without computation/
+      
+    //Now suppose we rewrite the declaration using the technique of eta expansion:
+            // let mrev = fun x -> (makeMonitoredFun List.rev) x
+             // Does this solve the problem? Explain why or why not.
+
+     // ANSWER b). Yes, because it is a syntactic value. This method is called eta expansion.
+
+
+problem15()
 
 
 Console.ReadKey() |> ignore
