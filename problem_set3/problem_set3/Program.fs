@@ -236,21 +236,20 @@ problem8()
 let problem11()=
 
     let fib n =
-        if n < 1 then failwith "n must be <= 1"
-        elif n = 1 then 0
+        if n <= 1 then n
         else
-            let x = ref 0
-            let y = ref 1
-            while !y <= n do
-                let x1 = !y
-                let y1 = !x + !y
-                x := x1 
-                y := y1
-            !y
+            let x = ref 1                //fib = 1
+            let y = ref 1                //fibPrev = 1
+            let mutable i = 2            // i = 2
+            while i <= n do             //while i < n do
+                let tmp = !x            // tmp = fib
+                x := !x + !y            // fib = fib + fibPrev
+                y := tmp                // fibPrev = tmp
+                i <- i + 1
+            !x
 
- 
 
-    printfn"\n Problem 11: fib 11 = %A" fib 4
+    fib 6 //gives me an error
 
 
 problem11()
