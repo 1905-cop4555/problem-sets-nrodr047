@@ -342,24 +342,27 @@ let problem14()=
 problem14()
 *)
 
-
+(*
 
 let problem15()=
 
-        //First, explain why F# does not allow the following declaration:
-            //let mrev = makeMonitoredFun List.rev
+    First, explain why F# does not allow the following declaration:
+       let mrev = makeMonitoredFun List.rev
 
-    //ANSWER a). This is not allowed due to F#'s value restriction. The above expression is not a syntactic value. 
-           // It is too generic and cannot be evaluated without computation/
+            ANSWER a). This is not allowed due to F#'s value restriction. 
+                       The above expression is not a syntactic value. 
+                        It is too generic and cannot be evaluated without computation/
       
-    //Now suppose we rewrite the declaration using the technique of eta expansion:
-            // let mrev = fun x -> (makeMonitoredFun List.rev) x
-             // Does this solve the problem? Explain why or why not.
+    Now suppose we rewrite the declaration using the technique of eta expansion:
+        let mrev = fun x -> (makeMonitoredFun List.rev) x
+        Does this solve the problem? Explain why or why not.
 
-     // ANSWER b). Yes, because it is a syntactic value. This method is called eta expansion.
+             ANSWER b). Yes, because it is a syntactic value.
 
 
 problem15()
+*)
+
 
 
 Console.ReadKey() |> ignore
