@@ -325,18 +325,19 @@ let problem14()=
     
     CODE DERIVATION: a[*x] = *x + 4
 
-    E|-                 E(x) = int* var 
-                           -----------------(ID)
-                           E|-x = int* var
-                           -----------------(R-VAL)
-                           E|-x = int* var
-                           -----------------(L-VAL)
-                           E|-*x = int var
-                           -----------------(R-VAL)
-                           E|-*x :int var   E|- 4 : int (LIT)
-                           -----------------------------(ADD)
-
-
+    E(a) = int var                  E(x) = int* var 
+    --------------(ID)              -----------------(ID)
+    E(x) = int* var                 E|-x = int* var
+    --------------(ID)               -----------------(R-VAL)
+    E|-x = int* var                 E|-x = int* var
+    --------------(R-VAL)           -----------------(L-VAL)
+    E|-x = int* var                 E|-*x = int var
+    --------------(L-VAL)           -----------------(R-VAL)
+    E|- a[*x] int var (SUBSCRIPT)   E|-*x :int var   E|- 4 : int (LIT)
+                                   -------------------------------(ADD)
+                                    E|- *x + 4 : int
+   ---------------------------------------------------------------(ASSIGN)
+   E|- a[*x] = *x + 4 : int
 
 
     
