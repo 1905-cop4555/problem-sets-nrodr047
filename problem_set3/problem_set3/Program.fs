@@ -13,6 +13,8 @@ let problem1()=
     | E -> 0
     | L(x,xs) -> x + (aList xs)
 
+
+
     //I'm not sure if this is correct.
 
     
@@ -35,13 +37,7 @@ Show the two derivation trees for the string in part (b).
     *)
 
     // If string starts with 0 then, 0AA or eat 1. If string starts with 1 then 1BB or eat 0. 
-    (*
-        S
-      A   S
-     A
-    
-    
-    *)
+  
 
 problem2()
 *)
@@ -191,23 +187,38 @@ For both functions, be sure to dislay an appropriate error message if the list d
     let nats = upfrom 1 //natural numbers greater than 0
 
     let rec take n (Cons(x,xsf))=
-        if n = 0 then []
-        else x::take(n-1)(xsf())
+        match n with
+        | 0 -> []
+        | n -> x::take(n-1)(xsf())
 
     let rec filter p (Cons(x,xsf)) =                    //filter function
-        if p x then Cons(x, fun()->filter p (xsf()))
+        if p x then Cons(x, fun()->filter p (xsf()))  
         else filter p (xsf())
 
-    let list = take 4 (filter(fun n-> n % 2 = 0) nats)
+   
 
-    printfn "Problem 7: %A" list 
+    //divisible function
+    let rec div (Cons(x,xsf)) =
+        Cons(x, fun() -> div (filter (fun n -> n%x = 0) (xsf())))
+ 
 
+    let result = div (upfrom 1) 
+    printfn "Problem 7: %A" result
 
-    
+    let rec eratosthenes (Cons(x, xsf)) =
+      Cons(x, fun () -> eratosthenes (filter (fun n -> n%x <> 0) (xsf())))
 
-    
+    let primes = eratosthenes (upfrom 2)
+
+    printfn "\n Eratosthene: %A" primes
+
 
 problem7()
+
+
+
+
+
 
 
 Console.ReadKey() |> ignore
