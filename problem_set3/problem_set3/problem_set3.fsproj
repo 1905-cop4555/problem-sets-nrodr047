@@ -49,8 +49,8 @@
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
-    <None Include="parser.fsx" />
-    <Compile Include="Interp.fs" />
+    <Compile Include="parser.fs" />
+    <Compile Include="pcf.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

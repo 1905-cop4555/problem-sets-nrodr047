@@ -1,4 +1,4 @@
-﻿module Interp
+﻿module pcf
 
 // Skeleton file for PCF interpreter
 
@@ -21,3 +21,4 @@ let rec interp = function
 let interpfile filename = filename |> parsefile |> interp
 
 let interpstr sourcecode = sourcecode |> parsestr |> interp
+

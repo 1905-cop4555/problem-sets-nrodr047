@@ -1,13 +1,14 @@
-﻿module Parser
+﻿module parser
 
 // Lexer and recursive-descent parser for PCF
 // Geoffrey Smith        October 25, 2010
 
 // This sets F# to read from whatever directory contains this source file.
-System.Environment.set_CurrentDirectory __SOURCE_DIRECTORY__
+// The statement is only needed when running from F# interactive.
+// System.Environment.set_CurrentDirectory __SOURCE_DIRECTORY__
 
-// The namespace is "Parser" (because the source file is "parser.fsx"),
-// so the full name of this module is "Parser.Lex".
+
+// The full name of this module is "Parser.Lex".
 module Lex =
 
   type token =
@@ -15,7 +16,7 @@ module Lex =
   | ISZEROTOK | IFTOK | THENTOK | ELSETOK | FUNTOK | RECTOK | ARROWTOK
   | LPARENTOK | RPARENTOK | LETTOK | EQUALTOK | INTOK | EOF
 
-  let explode (s : string) = [for c in s -> c]
+  let explode (s : string) = [for c in s do yield c]
 
   let isWhite c = c = ' ' || c = '\n' || c = '\r' || c = '\t'
 
