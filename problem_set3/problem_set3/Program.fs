@@ -245,7 +245,7 @@ let problem11()=
                 let tmp = !x            // tmp = fib
                 x := !x + !y            // fib = fib + fibPrev
                 y := tmp                // fibPrev = tmp
-                i := !i + 1
+                i := !i + 1             // i++
             !x
 
 
@@ -254,7 +254,7 @@ let problem11()=
 
 problem11()
 
-type Student = {grade_pts: float -> unit; credit_hrs: float -> unit; GPA: unit -> float}
+type Student = {credit_hrs: float -> unit; grade_pts: float -> float -> unit; GPA: unit -> float}
 
 let problem12()=
     (*Using imperative F#, create a record type for a student. 
@@ -270,11 +270,11 @@ let problem12()=
         let credits = ref 0.0
         let points = ref 0.0
         {
-        grade_pts = fun x -> points := !points + x;
         credit_hrs = fun y -> credits := !credits + y;
+        grade_pts = fun a b -> points := !points + (a + b);
         GPA = fun () -> (!points / !credits);}
 
-    student.grade_pts 4.0
+    student.grade_pts 0.0 3.0
     student.credit_hrs 3.0
     student.GPA()
 
@@ -283,7 +283,15 @@ problem12()
 
 let problem13()=
 
+    let mkstack init =
+        let stk = ref init
+        ((fun x -> stk := x ::(!stk)),             //push    updates stk by adding x to stk
+         (fun ()-> stk := List.tail(!stk)),       //pop     updates stk with the tail of tail
+         (fun ()-> List.head (!stk)))             //top     gets the head of the stack
 
+    
+    //factorial code
+    //
 
 problem13()
 
