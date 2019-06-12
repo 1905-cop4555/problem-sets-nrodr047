@@ -215,7 +215,22 @@ For both functions, be sure to dislay an appropriate error message if the list d
 
 problem7()
 
+let problem8()=
 
+    (*Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
+    Calculate these powers of 2I: 0I, 1I, 2I, 4I, 16I, 256I, 1024I, 32768I and 655*)
+
+    let rec power n acc=             //where n is the big int
+        match n with                 //match input with
+        | n when n=0 -> acc          // n when n = 0 return acc 
+        | n when n=1 -> 2I
+        | n when n>1 -> power(n-1) (acc + (2I * 2I))
+
+    let pow = power 1 2I
+
+    printfn "Problem 8: %A" pow
+
+problem8()
 
 
 
