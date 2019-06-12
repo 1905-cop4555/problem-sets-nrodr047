@@ -254,6 +254,32 @@ let problem11()=
 
 problem11()
 
+type Student = {GPA: unit -> int; credit_hrs: int -> unit; grade_pts: int -> unit;}
+
+let problem12()=
+    (*Using imperative F#, create a record type for a student. 
+    The record will have a function that returns the student's GPA, 
+    a function that adds credit hours and a function that adds grade points. 
+    Initialize an instance of the record with appropriate functions and values. 
+    Use the instance to add grade points and credits several times, and display the GPA.*)
+
+    //grade points / credits = GPA
+
+
+    let student =
+        let credits = ref 0
+        let points = ref 0
+        {grade_pts = fun x -> points := !points + x;
+        credit_hrs = fun y -> credits := !credits + y;
+        GPA = fun () -> !points/!credit;}
+
+    student.GPA()
+    student.grade_pts 4
+    student.credit_hrs 3
+    student.GPA()
+
+    
+problem12()
 
 
 
