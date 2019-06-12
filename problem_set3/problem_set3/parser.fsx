@@ -1,4 +1,4 @@
-﻿module Parser_script
+﻿module Parser
 
 // Lexer and recursive-descent parser for PCF
 // Geoffrey Smith        October 25, 2010

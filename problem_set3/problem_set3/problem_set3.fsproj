@@ -50,6 +50,7 @@
     <None Include="App.config" />
     <Content Include="packages.config" />
     <None Include="parser.fsx" />
+    <Compile Include="Interp.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
