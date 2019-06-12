@@ -5,7 +5,7 @@ open System
 type linkedList<'a> = 
     | E
     | L of 'a * linkedList<'a>
-
+ (*
 let problem1()=
     //write a function that converts a list into a linked list of nodes
 
@@ -19,6 +19,9 @@ let problem1()=
 
 problem1()
 
+*)
+
+(*
 let problem2()=
     (*
     This CFG recognizes some strings of zeros and ones.
@@ -41,26 +44,29 @@ Show the two derivation trees for the string in part (b).
     *)
 
 problem2()
+*)
 
+(*
 let problem3()=
 
-    (*
+   
 
     Write a CFG to recognize palindromes over the alphabet {a, b, |}, with the bar in the middle.
 Write a parse function that accepts a string and generates tokens for the language.
 Write a syntax checker that verifies if a list of tokens represents a palindrome.
 Extend the syntax checker so it generates an abstract syntax tree and displays it, for valid palindromes.
     
-    *)
+    
 
     // S -> aSa | bSb | a | b | i
 
 problem3()
+*)
 
-
+(*
 let problem4()=
 
-    (*
+    
     
     Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
 [When writing derivations, I tend to set a variable to the current state of memory, to save typing. My derivations are six lines, six lines, and 22 lines.]
@@ -134,12 +140,13 @@ let problem4()=
     
     ({i=1; j=10}, while (3*i <= j) do i := 3*i) => {i=9; j=10}
     
-    *)
+    
 
 
 
 
 problem4()
+*)
 
 
 let problem5()=
@@ -162,12 +169,45 @@ let problem5()=
 
 problem5()
 
-let problem5()=
+type 'a stream = Cons of 'a * (unit -> 'a stream)
+//infinite stream
+
+let problem7()=
+    (*Multiples of a list
+Generate an infinite stream for the the natural numbers greater than zero 
+that are divisible by each element in a list of four elements. 
+Use four, nested calls of filter on the infinite stream of natural numbers starting at one. 
+For example the output for the list [2;3;21;10]:
+210, 420, 630, 840, 1050, ...
+Display the 20th through 30th numbers in the series.
+Repeat the exercise using an infinite sequence. 
+Sequences also have a filter function, so it can be solved similarly to the infinite stream version. 
+Just for fun, try to solve it without using the filter function.
+For both functions, be sure to dislay an appropriate error message if the list does not have exactly four elements.*)
 
 
+    let rec upfrom n = Cons(n, fun()->upfrom(n+1)) //natural numbers in an infinite list
+    
+    let nats = upfrom 1 //natural numbers greater than 0
+
+    let rec take n (Cons(x,xsf))=
+        if n = 0 then []
+        else x::take(n-1)(xsf())
+
+    let rec filter p (Cons(x,xsf)) =                    //filter function
+        if p x then Cons(x, fun()->filter p (xsf()))
+        else filter p (xsf())
+
+    let list = take 4 (filter(fun n-> n % 2 = 0) nats)
+
+    printfn "Problem 7: %A" list 
 
 
-problem6()
+    
+
+    
+
+problem7()
 
 
 Console.ReadKey() |> ignore
