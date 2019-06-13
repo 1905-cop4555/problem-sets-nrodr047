@@ -282,7 +282,7 @@ let problem12()=
 
     
 problem12()
-
+(*
 let problem13()=
 
     let mkstack init =
@@ -298,7 +298,7 @@ let problem13()=
     // else n * factorial(n-1)
 
     let (push, pop, top) = mkstack [2;3;4]
-
+(
 
     let factorial n = 
         if n = 0 then push 1                 //if n = 0 push 1
@@ -312,6 +312,7 @@ let problem13()=
 
 
 problem13()
+*)
 (*
 let problem14()=
     
