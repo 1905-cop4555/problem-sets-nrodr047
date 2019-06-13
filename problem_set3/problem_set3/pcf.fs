@@ -64,17 +64,18 @@ programs
 let rec subst e x t =
     match e with
     | NUM n -> if ID x = NUM n then e else t
-    | APP (e1,e2) -> APP((subst e x e1),(subst e x e2))
-    | BOOL true -> if ID x = BOOL true then e else t
-    | BOOL false ->if ID x = BOOL false then e else t
-    | IF (e1,e2,e3) -> IF((subst e x e1),(subst e x e2),(subst e x e3))
-    | SUCC -> if ID x = SUCC then e else t
-    | PRED -> if ID x = PRED then e else t
+    | APP (e1, e2) -> APP(e1, subst e2 x t)
+    | IF (e1, e2, e3) -> IF(e1, (subst e2 x t), (subst e3 x t))
+    | FUN (e1, e2) -> if e1 = x then FUN (e1, subst e2 x t) else FUN (e1, e2)
+    | _ -> e
 
 printfn "subst (NUM 6) a (NUM 3) = %A" (subst (NUM 6) "a" (NUM 3))
 printfn "subst (BOOL true) a (NUM 3) = %A" (subst (BOOL true) "a" (NUM 3))
 printfn "subst SUCC a (NUM 3) = %A" (subst SUCC "a" (NUM 3))
 printfn "subst (APP(SUCC, ID a)) a (NUM 3) = %A" (subst (APP(SUCC, ID "a")) "a" (NUM 3))
+printfn "subst (IF (BOOL true, FUN (a, APP (SUCC, ID a)), FUN (b, APP (SUCC, ID a)))) a (NUM 3)= %A" (subst (IF (BOOL true, FUN ("a", APP (SUCC, ID "a")), FUN ("b", APP (SUCC, ID "a")))) "a" (NUM 3))
+
+//PART C
 
 
 Console.ReadKey() |> ignore
