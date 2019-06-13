@@ -50,6 +50,7 @@
     <Content Include="packages.config" />
     <Compile Include="parser.fs" />
     <Compile Include="pcf.fs" />
+    <Content Include="if.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

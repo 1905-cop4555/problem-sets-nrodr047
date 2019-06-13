@@ -49,7 +49,7 @@ let programs =
     printfn "succ(succ(succ 0)) = %A" <| interpstr "succ(succ(succ 0))"
     printfn "iszero succ = %A" <| interpstr "iszero succ" //error
     printfn "succ pred 7 = %A" <| interpstr "succ pred 7" //error
-
+    printfn "if.txt = %A" <| interpfile "../../if.txt" //could not find file name?
 
 programs
 
