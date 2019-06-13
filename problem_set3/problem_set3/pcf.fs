@@ -42,6 +42,8 @@ let interpfile filename = filename |> parsefile |> interp
 let interpstr sourcecode = sourcecode |> parsestr |> interp
 
 open System
+
+//PART A
 let programs = 
     printfn "succ 0 = %A" <| interpstr "succ 0"
     printfn "succ 1 = %A" <| interpstr "succ 1"
@@ -49,9 +51,27 @@ let programs =
     printfn "succ(succ(succ 0)) = %A" <| interpstr "succ(succ(succ 0))"
     printfn "iszero succ = %A" <| interpstr "iszero succ" //error
     printfn "succ pred 7 = %A" <| interpstr "succ pred 7" //error
-    printfn "if.txt = %A" <| interpfile "../../if.txt" //could not find file name?
+    printfn "if.txt = %A" <| interpfile "../../if.txt"
+    printfn "complex1.txt = %A" <| interpfile "../../complex1.txt" 
+    printfn "complex2.txt = %A" <| interpfile "../../complex2.txt"
+    printfn "complex3.txt = %A" <| interpfile "../../complex3.txt"
+    printfn "complex4.txt = %A" <| interpfile "../../complex4.txt"
 
 programs
+
+//PART B
+
+let rec subst e x t =
+    match e with
+    | NUM n -> if x = n then e else t
+    | APP (e1,e2) -> APP((subst e x e1),(subst e x e2))
+    | BOOL true -> BOOL true
+    | BOOL false -> BOOL false
+    | IF (e1,e2,e3) -> IF((subst e x e1),(subst e x e2),(subst e x e3))
+    | ERROR s -> ERROR s
+
+    
+
 
 Console.ReadKey() |> ignore
 

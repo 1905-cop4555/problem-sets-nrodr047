@@ -51,6 +51,10 @@
     <Compile Include="parser.fs" />
     <Compile Include="pcf.fs" />
     <Content Include="if.txt" />
+    <Content Include="complex1.txt" />
+    <Content Include="complex2.txt" />
+    <Content Include="complex3.txt" />
+    <Content Include="complex4.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
