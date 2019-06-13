@@ -77,9 +77,9 @@ printfn "subst (IF (BOOL true, FUN (a, APP (SUCC, ID a)), FUN (b, APP (SUCC, ID 
 
 //PART C
 
-printfn "(fun x -> succ x) 4 = %A" <| interpstr "fun x -> succ x) 4"
-printfn "(fun x -> fun y -> fun z -> if iszero x then succ y else pred z) 0 10 20 = %A" <| interpstr "(fun x -> fun y -> fun z -> if iszero x then succ y else pred z) 0 10 20"
-printfn "(fun x -> fun y -> fun x -> if iszero x then succ y else pred x) 0 10 20 = %A" <| interpstr "(fun x -> fun y -> fun x -> if iszero x then succ y else pred x) 0 10 20"
+//printfn "(fun x -> succ x) 4 = %A" <| interpstr "(fun x -> succ x) 4"
+//printfn "(fun x -> fun y -> fun z -> if iszero x then succ y else pred z) 0 10 20 = %A" <| interpstr "(fun x -> fun y -> fun z -> if iszero x then succ y else pred z) 0 10 20"
+//printfn "(fun x -> fun y -> fun x -> if iszero x then succ y else pred x) 0 10 20 = %A" <| interpstr "(fun x -> fun y -> fun x -> if iszero x then succ y else pred x) 0 10 20"
 
 
 

@@ -55,6 +55,7 @@
     <Content Include="complex2.txt" />
     <Content Include="complex3.txt" />
     <Content Include="complex4.txt" />
+    <Compile Include="type.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
